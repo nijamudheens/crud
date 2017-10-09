@@ -1,0 +1,45 @@
+<!-- Form used to add new entries of employee in database -->
+<form class="form-horizontal alert alert-warning" name="userList" id="userForm" ng-submit="insertInfo(userInfo);" hidden>
+<h3 class="text-center">Insert USER Details Into Database</h3>
+	<div class="form-group">
+		<label for="firstName">First Name:</label>
+		<input type="text" name="user_firstname" class="form-control" placeholder="Enter First Name" ng-model="userInfo.firstname" value="" autofocus required />
+	</div>
+	<div class="form-group">
+		<p class="text-danger" ng-show="userList.user_firstname.$invalid && userList.user_firstname.$dirty">First Name field is Empty!</p>
+	</div>
+
+	<div class="form-group">
+		<label for="lastName">Last Name:</label>
+		<input type="text" name="user_lastname" class="form-control" placeholder="Enter Last Name" ng-model="userInfo.lastname" value="" autofocus required />
+	</div>
+	<div class="form-group">
+		<p class="text-danger" ng-show="userList.user_lastname.$invalid && userList.user_lastname.$dirty">Last Name field is Empty!</p>
+	</div>
+	<div class="form-group">
+		<label for="Email">Email :</label>
+		<input type="email" name="user_email" class="form-control" placeholder="Enter Email Address" ng-model="userInfo.email" autofocus required />
+	</div>
+	<div class="form-group">
+		<p class="text-danger" ng-show="userList.user_email.$invalid && userList.user_email.$dirty">Invalid Email!</p>
+	</div>
+	<!-- <div class="form-group">
+		<label for="Password">Password :</label>
+		<input type="password" name="user_password" class="form-control" placeholder="Enter password" ng-model="userInfo.pass" autofocus required />
+	</div>
+	<div class="form-group">
+		<p class="text-danger" ng-show="userList.user_password.$invalid && userList.user_password.$dirty">Enter Password!</p>
+	</div> -->
+	<div class="form-group">
+		<label for="contact">Contact :</label>
+			<input name="user_contact" ng-model="userInfo.contact" id="c_num" type="text" ng-required="true" ng-pattern="ph_numbr" autocomplete="off" placeholder="Contact Number" class="form-control">
+				<span class="red-text" ng-if="userList.user_contact.$error.required && userList.user_contact.$dirty">Contact number is a required field</span>
+				<span class="red-text" ng-show="userList.user_contact.$error.pattern">Please enter a 10 digit number</span>
+            
+	</div>
+	
+	
+	<div class="form-group">
+		<button class="btn btn-warning" ng-disabled="userList.$invalid">Add Into Database</button>
+	</div>
+</form>
